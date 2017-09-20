@@ -1,6 +1,5 @@
 global.Promise = require 'bluebird'
 fs = require 'fs-jetpack'
-# selfsigned = require 'selfsigned'
 createCert = require 'create-cert'
 execa = require 'execa'
 args = require('minimist')(process.argv.slice(2))
@@ -17,12 +16,7 @@ if args._.length < 2
 	console.error 'requires 2 args'
 	process.exit(1)
 
-# if not require('is-root')()
-# 	console.error 'requires root access'
-# 	process.exit(1)
-
 Promise.resolve(domain)
-	# .then createCert
 	.then ()-> fs.readAsync '/System/Library/OpenSSL/openssl.cnf'
 	.then (opensslConf)-> fs.writeAsync FILES.sslconf, "#{opensslConf}\n[SAN]\nsubjectAltName=DNS:#{domain}"
 	.then ()->
@@ -47,6 +41,3 @@ Promise.resolve(domain)
 		console.log(FILES.caCert)
 	.then ()->
 		execa('open', ['/Applications/Utilities/Keychain\ Access.app', FILES.cert], stdio:'inherit')
-
-# # 'security add-trusted-cert -d -r trustRoot -k "/Library/Keychains/System.keychain" CA.crt'
-# execa('security', ['add-trusted-cert','-d','-r','trustRoot','/Library/Keychains/System.keychain',FILES.cert], stdio:'inherit')
