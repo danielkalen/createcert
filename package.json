@@ -1,0 +1,24 @@
+{
+  "name": "createcert",
+  "version": "1.0.0",
+  "description": "create certificates",
+  "main": "index.js",
+  "bin": {
+    "createcert": "./bin"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "coffee-register": "^0.1.2",
+    "create-cert": "^1.0.6",
+    "execa": "^0.8.0",
+    "fs-jetpack": "^1.2.0",
+    "is-root": "^1.0.0",
+    "minimist": "^1.2.0",
+    "selfsigned": "^1.10.1"
+  }
+}
