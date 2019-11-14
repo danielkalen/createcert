@@ -40,4 +40,4 @@ Promise.resolve(domain)
 		console.log(FILES.cert)
 		console.log(FILES.caCert)
 	.then ()->
-		execa('open', ['/Applications/Utilities/Keychain\ Access.app', FILES.cert], stdio:'inherit')
+		execa('open', ['/System/Applications/Utilities/Keychain\ Access.app', FILES.cert], stdio:'inherit')
